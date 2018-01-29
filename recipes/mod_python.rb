@@ -39,6 +39,7 @@ end
 file "#{node['apache']['dir']}/conf.d/python.conf" do
   action :delete
   backup false
+  only_if { File.exist? "#{node['apache']['dir']}/conf.d/python.conf" }
 end
 
 apache_module 'python'
